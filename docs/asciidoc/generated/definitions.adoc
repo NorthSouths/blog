@@ -1,0 +1,90 @@
+
+[[_definitions]]
+== 定义
+
+[[_blog]]
+=== Blog
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**content** +
+__可选__|**样例** : `"string"`|string
+|**created** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**description** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `0`|integer (int64)
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|**title** +
+__可选__|**样例** : `"string"`|string
+|**userId** +
+__可选__|**样例** : `0`|integer (int64)
+|===
+
+
+[[_logindto]]
+=== LoginDto
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**password** +
+__可选__|**样例** : `"string"`|string
+|**username** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_overp]]
+=== Overp
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**content** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `0`|integer (int64)
+|**pid** +
+__可选__|**样例** : `0`|integer (int64)
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|**title** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_result]]
+=== Result
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|**样例** : `0`|integer (int32)
+|**data** +
+__可选__|**样例** : `"object"`|object
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_userdto]]
+=== UserDto
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**email** +
+__可选__|**样例** : `"string"`|string
+|**password** +
+__可选__|**样例** : `"string"`|string
+|**username** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+

@@ -1,0 +1,27 @@
+{
+  "groups": [
+    {
+      "name": "myren.jwt",
+      "type": "com.myren.util.JwtUtils",
+      "sourceType": "com.myren.util.JwtUtils"
+    }
+  ],
+  "properties": [
+    {
+      "name": "myren.jwt.expire",
+      "type": "java.lang.Long",
+      "sourceType": "com.myren.util.JwtUtils"
+    },
+    {
+      "name": "myren.jwt.header",
+      "type": "java.lang.String",
+      "sourceType": "com.myren.util.JwtUtils"
+    },
+    {
+      "name": "myren.jwt.secret",
+      "type": "java.lang.String",
+      "sourceType": "com.myren.util.JwtUtils"
+    }
+  ],
+  "hints": []
+}

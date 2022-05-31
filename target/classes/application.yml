@@ -1,0 +1,5 @@
+myren:
+  jwt:
+    secret: hitmyren
+    expire: 3600
+    header: Authorization

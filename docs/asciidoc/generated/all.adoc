@@ -1,0 +1,1428 @@
+= 文档
+
+
+[[_overview]]
+== 概览
+RESTFUL API文档
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 1.0
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8080
+__基础路径__ : /
+
+
+=== 标签
+
+* account-controller : Account Controller
+* blog-controller : Blog Controller
+* check-controller : Check Controller
+* problem-controller : Problem Controller
+* special-controller : Special Controller
+* user-controller : User Controller
+
+
+
+
+[[_paths]]
+== 资源
+
+[[_account-controller_resource]]
+=== Account-controller
+Account Controller
+
+
+[[_loginusingpost]]
+==== 用户登录
+....
+POST /login
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Header**|**token** +
+__可选__|token|string
+|**Body**|**loginDto** +
+__必填__|loginDto|<<_logindto,LoginDto>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/login
+----
+
+
+====== 请求 header
+[source,json]
+----
+"string"
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "password" : "string",
+  "username" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_logoutusingget]]
+==== logout
+....
+GET /logout
+....
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/logout
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_registerusingget]]
+==== register
+....
+GET /register
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^4"]
+|===
+|类型|名称|类型
+|**Query**|**avatar** +
+__可选__|string
+|**Query**|**created** +
+__可选__|string (date-time)
+|**Query**|**email** +
+__可选__|string
+|**Query**|**id** +
+__可选__|integer (int64)
+|**Query**|**lastLogin** +
+__可选__|string (date-time)
+|**Query**|**password** +
+__可选__|string
+|**Query**|**status** +
+__可选__|integer (int32)
+|**Query**|**username** +
+__可选__|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/register
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "avatar" : "string",
+  "created" : "string",
+  "email" : "string",
+  "id" : 0,
+  "lastLogin" : "string",
+  "password" : "string",
+  "status" : 0,
+  "username" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_blog-controller_resource]]
+=== Blog-controller
+Blog Controller
+
+
+[[_delusingpost]]
+==== del
+....
+POST /blog/del
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**blog** +
+__必填__|blog|<<_blog,Blog>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/blog/del
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "content" : "string",
+  "created" : "string",
+  "description" : "string",
+  "id" : 0,
+  "status" : 0,
+  "title" : "string",
+  "userId" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_editusingpost]]
+==== edit
+....
+POST /blog/edit
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**blog** +
+__必填__|blog|<<_blog,Blog>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/blog/edit
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "content" : "string",
+  "created" : "string",
+  "description" : "string",
+  "id" : 0,
+  "status" : 0,
+  "title" : "string",
+  "userId" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_detialusingget]]
+==== detial
+....
+GET /blog/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/blog/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_listusingget]]
+==== list
+....
+GET /blogs
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|类型|名称|说明|类型|默认值
+|**Query**|**currentPage** +
+__可选__|currentPage|integer (int32)|`1`
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/blogs
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "currentPage" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_myblogusingget]]
+==== myblog
+....
+GET /myblog
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|类型|名称|说明|类型|默认值
+|**Query**|**currentPage** +
+__可选__|currentPage|integer (int32)|`1`
+|**Query**|**id** +
+__必填__|id|integer (int32)|
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/myblog
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "currentPage" : 0,
+  "id" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_check-controller_resource]]
+=== Check-controller
+Check Controller
+
+
+[[_bestusingget]]
+==== best
+....
+GET /best
+....
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/best
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_checkusingpost]]
+==== check
+....
+POST /check
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**over** +
+__必填__|over|<<_overp,Overp>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/check
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "content" : "string",
+  "id" : 0,
+  "pid" : 0,
+  "status" : 0,
+  "title" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_checksusingget]]
+==== checks
+....
+GET /checks
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4,.^2"]
+|===
+|类型|名称|说明|类型|默认值
+|**Query**|**currentPage** +
+__可选__|currentPage|integer (int32)|`1`
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/checks
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "currentPage" : 0
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_failureusingpost]]
+==== failure
+....
+POST /failure
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**overp** +
+__必填__|overp|<<_overp,Overp>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/failure
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "content" : "string",
+  "id" : 0,
+  "pid" : 0,
+  "status" : 0,
+  "title" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_rankusingget]]
+==== rank
+....
+GET /rank/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/rank/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_ranksucesssusingget]]
+==== ranksucesss
+....
+GET /ranksu/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/ranksu/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_rightusingpost]]
+==== right
+....
+POST /right
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**overp** +
+__必填__|overp|<<_overp,Overp>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/right
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "content" : "string",
+  "id" : 0,
+  "pid" : 0,
+  "status" : 0,
+  "title" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_problem-controller_resource]]
+=== Problem-controller
+Problem Controller
+
+
+[[_problemusingget]]
+==== problem
+....
+GET /problem/{pid}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**pid** +
+__必填__|pid|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/problem/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_specialusingget]]
+==== special
+....
+GET /special/{sid}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**sid** +
+__必填__|sid|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/special/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_special-controller_resource]]
+=== Special-controller
+Special Controller
+
+
+[[_specialsusingget]]
+==== specials
+....
+GET /specials
+....
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/specials
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_user-controller_resource]]
+=== User-controller
+User Controller
+
+
+[[_registerusingpost]]
+==== register
+....
+POST /user/register
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**user** +
+__必填__|user|<<_userdto,UserDto>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/user/register
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "email" : "string",
+  "password" : "string",
+  "username" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_userusingget]]
+==== user
+....
+GET /user/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|integer (int64)
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_result,Result>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/user/0
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : 0,
+  "data" : "object",
+  "msg" : "string"
+}
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_blog]]
+=== Blog
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**content** +
+__可选__|**样例** : `"string"`|string
+|**created** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**description** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `0`|integer (int64)
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|**title** +
+__可选__|**样例** : `"string"`|string
+|**userId** +
+__可选__|**样例** : `0`|integer (int64)
+|===
+
+
+[[_logindto]]
+=== LoginDto
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**password** +
+__可选__|**样例** : `"string"`|string
+|**username** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_overp]]
+=== Overp
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**content** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `0`|integer (int64)
+|**pid** +
+__可选__|**样例** : `0`|integer (int64)
+|**status** +
+__可选__|**样例** : `0`|integer (int32)
+|**title** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_result]]
+=== Result
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|**样例** : `0`|integer (int32)
+|**data** +
+__可选__|**样例** : `"object"`|object
+|**msg** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_userdto]]
+=== UserDto
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**email** +
+__可选__|**样例** : `"string"`|string
+|**password** +
+__可选__|**样例** : `"string"`|string
+|**username** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+
+
+

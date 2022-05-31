@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myren.mapper.OverpMapper">
+<update id="UpdateByIdandPid" parameterType="Long">
+    update overp set status = 1 where id = #{id} and pid = #{pid}
+</update>
+    <update id="UpdateByIdandPidtwo" parameterType="Long">
+    update overp set status = -1 where id = #{id} and pid = #{pid}
+</update>
+    <!--多表查询-->
+    <select id="rank" parameterType="Long" resultType="com.myren.entity.MidMoudle">
+        select id,overp.pid,overp.status,problem.sid,special.sname,overp.title from overp join problem
+        on overp.pid=problem.pid join special on problem.sid=special.sid WHERE id = #{id}
+    </select>
+    <!--嵌套查询-->
+    <select id="countAC" parameterType="Long" resultType="Integer">
+        select count(status) from overp where id = #{id} and status = 1
+    </select>
+
+    <select id="countWA" parameterType="Long" resultType="Integer">
+        select count(status) from overp where id = #{id} and status = -1
+    </select>
+    
+    <select id="countTR" parameterType="Long" resultType="Integer">
+        select count(status) from overp where id = #{id} and status = 0
+    </select>
+    
+    <!--分组查询：最强者-->
+    <select id="best" resultType="com.myren.entity.Best">
+        select username,ac from
+        (select username,max(ac) as ac from user natural join
+        (select id,count(status) as ac from overp where status = 1 group by id)
+        as A group by username) as C
+        where
+        ac in
+        (select max(ac) as ac from user natural join
+        (select id,count(status) as ac from overp where status = 1 group by id)
+         as b);
+    </select>
+</mapper>
