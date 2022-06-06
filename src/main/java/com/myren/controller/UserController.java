@@ -5,20 +5,15 @@ import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.myren.common.dto.UserDto;
 import com.myren.common.lang.Result;
 import com.myren.entity.User;
 import com.myren.mapper.UserMapper;
 import com.myren.service.UserService;
-import com.myren.service.impl.UserServiceImpl;
-import com.sun.net.httpserver.Authenticator;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.sql.Wrapper;
 import java.time.LocalDateTime;
 
 /**
@@ -42,7 +37,7 @@ public class UserController {
         User user = userService.getById(id);
         Assert.notNull(user,"该用户不存在");
         user.setPassword(null);
-        return Result.success(user);
+        return Result.success("提交成功", user);
     }
     @PostMapping("/user/register")
     public Result register(@Validated @RequestBody UserDto user){
@@ -62,7 +57,7 @@ public class UserController {
             temp.setStatus(a);
             System.out.println(temp);
             userService.saveOrUpdate(temp);
-            return Result.success(null);
+            return Result.success("提交成功", null);
         }
     }
 

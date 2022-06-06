@@ -3,17 +3,14 @@ package com.myren.controller;
 
 import cn.hutool.core.bean.BeanUtil;
 import cn.hutool.core.lang.Assert;
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.myren.common.lang.Result;
 import com.myren.entity.Blog;
-import com.myren.entity.User;
 import com.myren.mapper.BlogMapper;
 import com.myren.service.BlogService;
 import com.myren.util.ShiroUtil;
-import org.apache.shiro.SecurityUtils;
 
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,13 +39,13 @@ public class BlogController {
     public Result list(@RequestParam(defaultValue = "1") Integer currentPage){
         Page page = new Page(currentPage,3);
         IPage pageData = blogService.page(page, new QueryWrapper<Blog>().orderByDesc("created"));
-        return Result.success(pageData);
+        return Result.success("提交成功", pageData);
     }
     @GetMapping("/blog/{id}")
     public Result detial(@PathVariable(name = "id") Long id){
         Blog blog = blogService.getById(id);
         Assert.notNull(blog,"该博客已被删除");
-        return Result.success(blog);
+        return Result.success("提交成功", blog);
     }
 
     @RequiresAuthentication
@@ -67,7 +64,7 @@ public class BlogController {
         }
         BeanUtil.copyProperties(blog,temp,"id","userId","created","status");
         blogService.saveOrUpdate(temp);
-        return Result.success(null);
+        return Result.success("提交成功", null);
     }
 
 
@@ -84,7 +81,7 @@ public class BlogController {
             Assert.isTrue(temp.getUserId().equals(ShiroUtil.getProfile().getId()),"没有权限删除文章");
         }
         blogService.removeById(temp.getId().longValue());
-        return Result.success("删除成功");
+        return Result.success("提交成功", "删除成功");
     }
 /*    public Result list(@RequestParam(defaultValue = "1") Integer currentPage){
         Page page = new Page(currentPage,5);
@@ -99,6 +96,6 @@ public class BlogController {
         queryWrapper.eq("user_id",id.longValue());
         Page page = new Page(currentPage,5);
         IPage pageData = blogService.page(page,queryWrapper);
-        return Result.success(pageData);
+        return Result.success("提交成功", pageData);
     }
 }

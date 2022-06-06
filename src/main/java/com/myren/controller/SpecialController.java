@@ -1,11 +1,7 @@
 package com.myren.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.myren.common.lang.Result;
-import com.myren.entity.Blog;
 import com.myren.entity.Special;
 import com.myren.mapper.SpecialMapper;
 import com.myren.service.SpecialService;
@@ -31,7 +27,7 @@ public class SpecialController {
     @GetMapping("/specials")
     public Result specials(){
         List<Special>specials = specialService.list();
-        return Result.success(specials);
+        return Result.success("提交成功", specials);
     }
 
 }

@@ -11,7 +11,6 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,14 +33,14 @@ public class ProblemController {
         wrapper.eq("sid",sid);
         List<Problem> problems = problemMapper.selectList(wrapper);
         if(problems!=null)
-        return Result.success(problems);
+        return Result.success("提交成功", problems);
         else
             throw new AssertionError("找不到该专题");
     }
     @GetMapping("/problem/{pid}")
     public Result problem(@PathVariable(name = "pid") Long pid){
         Problem problem = problemMapper.selectById(pid);
-        return Result.success(problem);
+        return Result.success("提交成功", problem);
     }
     @PostMapping("/make")
     public Result makeProblem(@Validated @RequestBody Problem problem){
@@ -49,6 +48,6 @@ public class ProblemController {
         problem.setCreated(LocalDateTime.now());
 
         problemService.save(problem);
-        return Result.success("插入成功");
+        return Result.success("提交成功", "插入成功");
     }
 }

@@ -1,6 +1,5 @@
 package com.myren.controller;
 
-import cn.hutool.core.lang.Assert;
 import cn.hutool.core.map.MapUtil;
 import cn.hutool.crypto.SecureUtil;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -15,7 +14,6 @@ import io.swagger.annotations.ApiOperation;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.annotation.Order;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -52,7 +50,7 @@ public class AccountController {
         response.setHeader("Authorization",jwt);
         response.setHeader("Access-control-Expose-Headers","Authorization");
 
-        return  Result.success(MapUtil.builder()
+        return  Result.success("提交成功", MapUtil.builder()
                 .put("id",user.getId())
                 .put("username",user.getUsername())
                 .put("avatar",user.getAvatar())
@@ -67,12 +65,12 @@ public class AccountController {
     @GetMapping("/logout")
     public Result logout(){
         SecurityUtils.getSubject().logout();
-        return Result.success(null);
+        return Result.success("提交成功", null);
     }
     //注册
     @GetMapping("/register")
     public Result register(User user){
 
-        return Result.success(null);
+        return Result.success("提交成功", null);
     }
 }

@@ -68,20 +68,20 @@ public class CheckController {
         }*/
         Page page = new Page(currentPage,5);
         IPage pageData = overpService.page(page, queryWrapper);
-        return Result.success(pageData);
+        return Result.success("提交成功", pageData);
     }
     @PostMapping("/right")
     public Result right(@RequestBody Overp overp){
         overp.setStatus(1);
         overMapper.UpdateByIdandPid(overp.getId(), overp.getPid());
         problemMapper.checkSuccess(overp.getPid());
-        return Result.success("成功");
+        return Result.success("提交成功", "成功");
     }
     @PostMapping("/failure")
     public Result failure(@RequestBody Overp overp){
         overp.setStatus(-1);
         overMapper.UpdateByIdandPidtwo(overp.getId(), overp.getPid());
-        return Result.success("成功");
+        return Result.success("提交成功", "成功");
     }
     @GetMapping("/ranksu/{id}")
     public Result ranksucesss(@PathVariable(name = "id") Long id){
@@ -92,7 +92,7 @@ public class CheckController {
         List<MidMoudle>list =overMapper.rank(id);
 /*        List<Overp>list1 =overMapper.selectList(queryWrapper1);
         list.addAll(list1);*/
-        return Result.success(list);
+        return Result.success("提交成功", list);
     }
     @GetMapping("/rank/{id}")
     public Result rank(@PathVariable Long id){
@@ -100,11 +100,11 @@ public class CheckController {
         rank.setAC(overMapper.countAC(id));
         rank.setWA(overMapper.countWA(id));
         rank.setTR(overMapper.countTR(id));
-        return Result.success(rank);
+        return Result.success("提交成功", rank);
     }
     @GetMapping("/best")
     public Result best(){
         List<Best> bests=overMapper.best();
-        return Result.success(bests);
+        return Result.success("提交成功", bests);
     }
 }
