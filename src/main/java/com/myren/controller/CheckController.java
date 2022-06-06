@@ -1,20 +1,30 @@
 package com.myren.controller;
+
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
-import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.myren.common.lang.Result;
-import com.myren.entity.*;
+import com.myren.entity.Best;
+import com.myren.entity.MidMoudle;
+import com.myren.entity.Overp;
+import com.myren.entity.Rank;
 import com.myren.mapper.OverpMapper;
 import com.myren.mapper.ProblemMapper;
 import com.myren.service.OverpService;
+import com.myren.submit.HDUSubmitter;
+import com.myren.submit.Submission;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 public class CheckController {
+
+    @Autowired
+    @Qualifier("hduSubmitter1")
+    HDUSubmitter hduSubmitter1;
     @Autowired
     OverpService overpService;
     @Autowired
@@ -29,13 +39,20 @@ public class CheckController {
         Overp overp = overMapper.selectOne(queryWrapper);
         if(overp==null||overp.getStatus()==-1){
             overpService.save(over);
-            return Result.success("提交成功");
+            //提交至hdu判断
+            Submission submission = new Submission();
+            submission.setLanguage(0).setOriginProblemId(1000+over.getId().toString()).setSourceCode(over.getContent());
+            hduSubmitter1.setSubmission(submission);
+            hduSubmitter1.work();
+            com.myren.submit.Result result = hduSubmitter1.getResult();
+            System.out.println(result);
+            return Result.success("提交成功",result);
         }
         else{
             if(overp.getStatus()==0)
-            throw new IllegalArgumentException("您已经提交过了,等待审批中");
+                throw new IllegalArgumentException("您已经提交过了,等待审批中");
             else
-            throw new IllegalArgumentException("此题您已经正确");
+                throw new IllegalArgumentException("此题您已经正确");
         }
     }
 

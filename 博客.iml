@@ -77,7 +77,7 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.jayway.jsonpath:json-path:2.4.0" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:json-smart:2.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: net.minidev:accessors-smart:1.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm:5.0.4" level="project" />
+    <orderEntry type="library" scope="TEST" name="Maven: org.ow2.asm:asm:5.0.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: jakarta.xml.bind:jakarta.xml.bind-api:2.3.3" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: jakarta.activation:jakarta.activation-api:1.2.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.assertj:assertj-core:3.18.1" level="project" />
@@ -115,6 +115,15 @@
     <orderEntry type="library" name="Maven: org.antlr:antlr4-runtime:4.7" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.4" level="project" />
     <orderEntry type="library" name="Maven: net.sf.saxon:Saxon-HE:9.8.0-4" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: com.sun:tools:1.8.0">
+        <CLASSES>
+          <root url="jar://$USER_HOME$/.jdks/corretto-1.8.0_265/lib/tools.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring-boot-web-starter:1.4.0-RC2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-spring:1.4.0-RC2" level="project" />
     <orderEntry type="library" name="Maven: org.apache.shiro:shiro-web:1.4.0-RC2" level="project" />
@@ -127,9 +136,6 @@
     <orderEntry type="library" name="Maven: jakarta.validation:jakarta.validation-api:2.0.1" level="project" />
     <orderEntry type="library" name="Maven: com.aliyun:aliyun-java-sdk-core:3.2.8" level="project" />
     <orderEntry type="library" name="Maven: com.aliyun.oss:aliyun-sdk-oss:3.1.0" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.13" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
-    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
     <orderEntry type="library" name="Maven: org.jdom:jdom:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-json:1.9" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.jettison:jettison:1.1" level="project" />
@@ -170,13 +176,6 @@
     <orderEntry type="library" name="Maven: org.apache.commons:commons-lang3:3.11" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.4" level="project" />
     <orderEntry type="library" name="Maven: nl.jworks.markdown_to_asciidoc:markdown_to_asciidoc:1.0" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.pegdown:pegdown:1.4.2" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.parboiled:parboiled-java:1.1.6" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.parboiled:parboiled-core:1.1.6" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm-tree:4.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm-analysis:4.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.ow2.asm:asm-util:4.1" level="project" />
-    <orderEntry type="library" scope="RUNTIME" name="Maven: org.jsoup:jsoup:1.8.1" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-compat-spec-parser:1.0.25" level="project" />
     <orderEntry type="library" name="Maven: io.swagger:swagger-core:1.5.12" level="project" />
     <orderEntry type="library" name="Maven: com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.4" level="project" />
@@ -205,5 +204,9 @@
     <orderEntry type="library" name="Maven: io.javaslang:javaslang:2.0.5" level="project" />
     <orderEntry type="library" name="Maven: io.javaslang:javaslang-match:2.0.5" level="project" />
     <orderEntry type="library" name="Maven: ch.netzwerg:paleo-core:0.10.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jsoup:jsoup:1.10.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.5.12" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpcore:4.4.14" level="project" />
+    <orderEntry type="library" name="Maven: commons-codec:commons-codec:1.15" level="project" />
   </component>
 </module>

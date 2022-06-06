@@ -10,7 +10,8 @@
     {
       "name": "myren.jwt.expire",
       "type": "java.lang.Long",
-      "sourceType": "com.myren.util.JwtUtils"
+      "sourceType": "com.myren.util.JwtUtils",
+      "defaultValue": 0
     },
     {
       "name": "myren.jwt.header",

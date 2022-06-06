@@ -14,7 +14,7 @@ public class Result implements Serializable {
         return  success(200,"操作成功",data);
     }
 
-    public static Result success(int code,String msg,Object data){
+    public static Result success(String msg, Object data){
         Result result=new Result();
         result.setCode(code);
         result.setData(data);
