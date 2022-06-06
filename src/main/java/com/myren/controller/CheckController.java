@@ -46,6 +46,7 @@ public class CheckController {
             hduSubmitter1.work();
             com.myren.submit.Result result = hduSubmitter1.getResult();
             System.out.println(result);
+            //
             return Result.success("提交成功",result);
         }
         else{
