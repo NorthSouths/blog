@@ -107,6 +107,7 @@ public class HDUSubmitter {
                 System.out.println(result);
                 System.out.println(submission.getOriginProblemId());
                 System.out.println(result.getStatus());
+                response.getEntity().consumeContent();
                 break;
             } catch (Exception e) {
 
