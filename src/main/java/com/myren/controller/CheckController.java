@@ -13,6 +13,7 @@ import com.myren.mapper.ProblemMapper;
 import com.myren.service.OverpService;
 import com.myren.submit.HDUSubmitter;
 import com.myren.submit.Submission;
+import org.apache.tomcat.jni.Time;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
@@ -37,24 +38,34 @@ public class CheckController {
         queryWrapper.eq("id",over.getId());
         queryWrapper.eq("pid",over.getPid());
         Overp overp = overMapper.selectOne(queryWrapper);
-        if(overp==null||overp.getStatus()==-1){
+        if(overp==null){
             overpService.save(over);
-            //提交至hdu判断
-            Submission submission = new Submission();
-            submission.setLanguage(0).setOriginProblemId(1000+over.getId().toString()).setSourceCode(over.getContent());
-            hduSubmitter1.setSubmission(submission);
-            hduSubmitter1.work();
-            com.myren.submit.Result result = hduSubmitter1.getResult();
-            System.out.println(result);
-            //
-            return Result.success("提交成功",result);
+        }else if(overp.getStatus()!=1){
+            overMapper.Update(over);
         }
         else{
-            if(overp.getStatus()==0)
-                throw new IllegalArgumentException("您已经提交过了,等待审批中");
-            else
+//            if(overp.getStatus()==0)
+//                throw new IllegalArgumentException("您已经提交过了,等待审批中");
+//            else
                 throw new IllegalArgumentException("此题您已经正确");
         }
+        //Time.sleep(1000);
+        //提交至hdu判断
+        Submission submission = new Submission();
+        submission.setLanguage(0).setOriginProblemId(String.valueOf(1000+over.getPid())).setSourceCode(over.getContent());
+        hduSubmitter1.setSubmission(submission);
+        hduSubmitter1.work();
+        com.myren.submit.Result result = hduSubmitter1.getResult();
+        System.out.println(result);
+        if (result.getStatus().equals("Accepted")){
+            over.setStatus(1);
+            overMapper.UpdateByIdandPid(over.getId(), over.getPid());
+        }else{
+            over.setStatus(-1);
+            overMapper.UpdateByIdandPidtwo(over.getId(), over.getPid());
+            problemMapper.checkSuccess(over.getPid());
+        }
+        return Result.success("提交成功",result);
     }
 
     @RequestMapping(value = "/checks",method = RequestMethod.GET)

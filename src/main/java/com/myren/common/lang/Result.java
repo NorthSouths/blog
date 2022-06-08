@@ -10,7 +10,7 @@ public class Result implements Serializable {
     private String msg;
     private Object data;
 
-    public static Result success(String 提交成功, Object data){
+    public static Result success(String 提交成功,Object data){
         return  success(200,"操作成功",data);
     }
 

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.myren.mapper.OverpMapper">
+    <update id="Update" parameterType="com.myren.entity.Overp">
+        update overp set overp.content = #{content} where id = #{id} and pid = #{pid}
+    </update>
 <update id="UpdateByIdandPid" parameterType="Long">
     update overp set status = 1 where id = #{id} and pid = #{pid}
 </update>

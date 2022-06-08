@@ -22,6 +22,7 @@ import java.util.List;
 public interface OverpMapper extends BaseMapper<Overp> {
     int UpdateByIdandPid(Long id,Long pid);
     int UpdateByIdandPidtwo(Long id,Long pid);
+    int Update(Overp overp);
     List<MidMoudle> rank(Long id);
     int countAC(Long id);
     int countWA(Long id);

@@ -10,6 +10,7 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.utils.URIBuilder;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -30,8 +31,7 @@ public class HDUSubmitter {
     private Result result;
     private String userName;
     private String password;
-
-    private CloseableHttpClient httpClient = HttpClients.createDefault();
+    private CloseableHttpClient httpClient = HttpClients.custom().setConnectionManagerShared(true).build();
     private RequestConfig config = RequestConfig.custom().setConnectTimeout(1000)
             .setConnectionRequestTimeout(500)
             .setSocketTimeout(10 * 1000)
@@ -42,8 +42,6 @@ public class HDUSubmitter {
         this.password = password;
         login();
     }
-
-
     private void login() throws IOException {
         HttpPost httpPost = new HttpPost("https://acm.hdu.edu.cn/userloginex.php?action=login&cid=0&notice=0");
         ArrayList<NameValuePair> params = new ArrayList<>();
@@ -61,7 +59,7 @@ public class HDUSubmitter {
         ArrayList<NameValuePair> params = new ArrayList<>();
         params.add(new BasicNameValuePair("check", "0"));
         params.add(new BasicNameValuePair("language", "0"));
-        params.add(new BasicNameValuePair("problemid", "1000"));
+        params.add(new BasicNameValuePair("problemid", submission.getOriginProblemId()));
         params.add(new BasicNameValuePair("usercode", submission.getSourceCode()));
         UrlEncodedFormEntity formEntity = new UrlEncodedFormEntity(params, "utf8");
         httpPost.setEntity(formEntity);
@@ -107,7 +105,8 @@ public class HDUSubmitter {
                 result = new Result();
                 result.setLanguage(language).setMemory(memory).setTime(time).setStatus(status).setProblemId(problemId);
                 System.out.println(result);
-//                System.out.println(status);
+                System.out.println(submission.getOriginProblemId());
+                System.out.println(result.getStatus());
                 break;
             } catch (Exception e) {
 
@@ -140,6 +139,7 @@ public class HDUSubmitter {
                 submit();
             }
             getAns();
+            httpClient.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
